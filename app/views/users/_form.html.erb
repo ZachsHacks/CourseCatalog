@@ -1,5 +1,5 @@
 
-<%= form_for User.new, layout: :horizontal do |f| %>
+<%= form_for User.new, layout: :basic do |f| %>
 
 <% if user.errors.any? %>
 <div id="error_explanation">
@@ -13,32 +13,34 @@
 </div>
 <% end %>
 
-<div class="field">
+
+<div class="container">
 	<%= f.text_field :first %>
 </div>
 
-<div class="field">
+<div class="container">
 	<%= f.text_field :middle %>
 </div>
 
-<div class="field">
+<div class="container">
 	<%= f.text_field :last %>
 </div>
 
-<div class="field">
+<div class="container">
 	<%= f.text_field :email %>
 </div>
 
-<div class="field">
+<div class="container">
 	<%= f.password_field :password %>
 </div>
 
-<div class="field">
+<div class="container">
 	<%= f.password_field :password_confirmation, label: 'Confirm Password' %>
 </div>
 
 
-<div class="actions">
-	<%= f.submit %>
+<div class="container">
+	<%= f.submit "Create my account", class: "btn btn-primary" %>
 </div>
-<% end %>
+
+ <% end %>
