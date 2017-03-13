@@ -1,0 +1,6 @@
+<%= form_for User.new, layout: :basic do |f| %>
+<%= f.email_field :email %>
+<%= f.password_field :password %>
+<%= f.check_box :remember_me, checked: true %>
+<%= f.submit 'Sign in' %>
+<% end %>
