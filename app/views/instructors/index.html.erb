@@ -1,1 +1,39 @@
-<%=pretty_print_instructors(@instructors)%>
+<div class="full__instruct__container">
+	<%=pretty_print_instructors(@instructors)%>
+</div>
+
+<style>
+	.full__instruct__container {
+		column-count: 4;
+		margin: 0 auto;
+		padding: 30px;
+	}
+
+	@media all and (max-width: 900px) {
+		.full__instruct__container {
+			column-count: 3;
+		}
+	}
+
+	.instruct__container {
+		padding: 15px;
+	}
+
+	.instruct__name {
+		margin: 0;
+		font-size: 25px;
+		line-height: 1.2em;
+	}
+
+	.instruct__email {
+		margin: 0;
+		padding-top: 5px;
+		font-size: 18px;
+	}
+
+	.username {
+		font-weight: 600;
+	}
+
+
+</style>

@@ -1,1 +1,22 @@
-<%=pretty_print_subjects(@subjects)%>
+
+
+<div class="container subj-container">
+	<p class="subject"> <%=pretty_print_subjects(@subjects)%></p>
+
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+	.subj-container {
+			column-count: 4;
+			padding: 30px;
+			column-gap: 40px;
+			color: black;
+		}
+		.subject {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 18px;
+			line-height: 1.4em;
+		}
+
+	</style>
+</div>
