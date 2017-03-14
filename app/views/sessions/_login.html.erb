@@ -1,6 +1,7 @@
 
 <div class="container">
-
+<%= flash.now[:danger] if flash.now[:danger] != nil %>
+<br>
 <%= form_for(:session, url: login_path, layout: :basic)do |f| %>
 <%= f.email_field :email %>
 <%= f.password_field :password %>

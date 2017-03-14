@@ -1,25 +1,16 @@
-<p id="notice"><%= notice %></p>
 
+<div class="user__container">
 
-<p>
-  <strong>First:</strong>
-  <%= @user.first %>
-</p>
+	<%= pretty_print(@user) %>
 
-<p>
-  <strong>Middle:</strong>
-  <%= @user.middle %>
-</p>
+</div>
 
-<p>
-  <strong>Last:</strong>
-  <%= @user.last %>
-</p>
+<style>
+.user__container {
+	padding: 150px;
+	margin: auto;
+	width: 50%;
+	margin: 0 auto;
+}
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</style>
