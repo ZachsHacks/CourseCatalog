@@ -15,10 +15,12 @@ module CourseHelper
 	end
 
 	def add_enroll_button(course_id)
-		string = ""
+		string = "<div id='div1'>"
 		# string << "<form action=\"http://google.com\">"
-		string << "<button type=\"button\" href=#{enrollments_create_path(course_id: course_id, user_id: current_user.id)} data-remote=\"true\" class=\"btn btn-secondary btn-sm\">Enroll</button>"
+		string << "<button type='button' id='user' name='enroll' value=\"#{course_id}\" data-remote='true' class='btn btn-secondary'>Enroll</button>"
 		# string << "</form>"
+		string << "</div>"
+
 		string
 	end
 end

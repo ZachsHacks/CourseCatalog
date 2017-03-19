@@ -1,13 +1,15 @@
 class EnrollmentsController < ApplicationController
 
 	def create
-		byebug
-		Enrollment.create(enrollment_params)
 
-		respond_to do |format|
-			format.js
-		end
+		puts params.inspect
 
+		# Enrollment.create(enrollment_params)
+		#
+		# respond_to do |format|
+		# 	format.js
+		# end
+		
 	end
 
 	def destroy

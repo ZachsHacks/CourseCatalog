@@ -1,35 +1,13 @@
 <%=pretty_print_courses(@courses)%>
 
-<style>
-.courses {
-	margin: 0 auto;
-	max-width: 80%;
-	width: 800px;
-	margin: 15px auto;
-	padding: 15px;
-	color: black;
-	border-top: 1px solid black;
-}
-
-p {
-	margin: 0;
-	padding: 5px;
-}
-
-.courses__name {
-	line-height: 1.2em;
-	margin: 0;
-}
-
-.courses__independent {
-	font-size: 15px;
-	font-style: italic;
-}
-
-.courses__description {
-	font-size: 20px;
-	line-height: 1.2em;
-}
-
-
-</style>
+<script>
+$("button[id=user]").click(function(){
+	if (document.getElementById("user").name=="enroll") {
+		value=document.getElementById("user").value;
+		$("#div1").load("#{enrollments_create_path}"+value);
+	}else{
+		value=document.getElementById("user").value;
+		$("#div1").load("#{enrollments_destroy_path}"+value);
+	}
+});
+</script>
