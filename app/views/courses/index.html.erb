@@ -1,13 +1,16 @@
 <%=pretty_print_courses(@courses)%>
 
-<script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+
 $("button[id=user]").click(function(){
-	if (document.getElementById("user").name=="enroll") {
-		value=document.getElementById("user").value;
-		$("#div1").load("#{enrollments_create_path}"+value);
-	}else{
-		value=document.getElementById("user").value;
-		$("#div1").load("#{enrollments_destroy_path}"+value);
-	}
+  if (document.getElementById("user").name=="follow") {
+    value=document.getElementById("user").value;
+    $("#div1").load("/follow/new/"+value);
+  }else{
+    value=document.getElementById("user").value;
+    $("#div1").load("/follow/delete/"+value);
+  }
 });
-</script>
+
+
+</script> -->

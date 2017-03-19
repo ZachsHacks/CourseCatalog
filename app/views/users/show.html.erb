@@ -1,16 +1,10 @@
 
-<div class="user__container">
+<div class="container">
 
-	<%= pretty_print(@user) %>
+	<%= pretty_print_user(@user) %>
 
 </div>
 
-<style>
-.user__container {
-	padding: 150px;
-	margin: auto;
-	width: 50%;
-	margin: 0 auto;
-}
-
-</style>
+<div class="container">
+	<%=  pretty_print_enrollments(@enrollments) %>
+</div>

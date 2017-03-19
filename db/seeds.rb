@@ -35,15 +35,23 @@ def seed_subjects
 end
 
 def seed_listing(course_id, course)
-		subjects = course['subjects']
-		subjects.each do |subject|
-			subject_that_exists = Subject.find_by(subject_id: subject['id'])
-			Listing.find_or_create_by(course_id: course_id, subject_id: subject_that_exists.id) if subject_that_exists
-		end
+	subjects = course['subjects']
+	subjects.each do |subject|
+		subject_that_exists = Subject.find_by(subject_id: subject['id'])
+		Listing.find_or_create_by(course_id: course_id, subject_id: subject_that_exists.id) if subject_that_exists
+	end
 
+end
+
+def seed_test_user
+	u = User.create(first: "Zach", middle: "Shale", last: "Weiss", email: "abc@gmail.com", password: "123", password_confirmation: "123")
+	(50).times do
+		Enrollment.find_or_create_by(course_id: rand(Course.count), user_id: u.id)
+	end
 end
 
 burn_down_the_house
 seed_subjects
 seed_courses
 seed_instructors
+seed_test_user

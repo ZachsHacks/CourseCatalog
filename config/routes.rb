@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :listings
 	resources :subjects
+	resources :courses
   get 'enrollments/create'
 
   get 'enrollments/destroy'
