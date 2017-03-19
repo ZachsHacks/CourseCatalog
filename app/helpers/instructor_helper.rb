@@ -1,7 +1,7 @@
 module InstructorHelper
 	def pretty_print_instructors(instructors)
 		string = ""
-		instructors.each do |prof|
+		instructors.sort_by {|s| s.first}.each do |prof|
 			string << "<div class='instruct__container'>"
 			string << "<p class='instruct__name'>#{prof.first} #{prof.middle} #{prof.last}</p>"
 			string << "<p class='instruct__email'><span class='username'>#{prof.username}</span>@brandeis.edu</p>"

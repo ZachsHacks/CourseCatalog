@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :listings
+	resources :subjects
+  get 'enrollments/create'
+
+  get 'enrollments/destroy'
+
   get 'sessions/new'
 	get 'courses/' , to: "courses#index"
   get 'subjects/' , to: "subjects#index"

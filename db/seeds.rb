@@ -4,13 +4,15 @@ def burn_down_the_house
 	Course.destroy_all
 	Instructor.destroy_all
 	Subject.destroy_all
+	Listing.destroy_all
 end
 
 def seed_courses
 	json = JSON.parse(File.read('db/seeds/course.json'))
 
 	json.each do |course|
-		Course.create(name: course["name"], independent_study: course["independent_study"], code: course["code"], description: course["description"])
+		c = Course.create(name: course["name"], independent_study: course["independent_study"], code: course["code"], description: course["description"])
+		seed_listing(c.id, course)
 	end
 
 end
@@ -27,12 +29,21 @@ def seed_subjects
 	json = JSON.parse(File.read('db/seeds/subject.json'))
 
 	json.each do |a|
-		Subject.create(name: a["name"])
+		Subject.create(name: a["name"], subject_id: a["id"])
 	end
 
 end
 
+def seed_listing(course_id, course)
+		subjects = course['subjects']
+		subjects.each do |subject|
+			subject_that_exists = Subject.find_by(subject_id: subject['id'])
+			Listing.find_or_create_by(course_id: course_id, subject_id: subject_that_exists.id) if subject_that_exists
+		end
+
+end
+
 burn_down_the_house
+seed_subjects
 seed_courses
 seed_instructors
-seed_subjects
