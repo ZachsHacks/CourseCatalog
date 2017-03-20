@@ -6,5 +6,4 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
 		end
 		add_column :subjects, :subject_id, :string
 	end
-
 end
