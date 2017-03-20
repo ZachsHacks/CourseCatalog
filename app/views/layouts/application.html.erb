@@ -11,58 +11,88 @@
 
 
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-<div class ="container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href=<%=root_path%>>Brandeis Course Catalog</a>
-  </div>
+	<div class ="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href=<%=root_path%>>Course Catalog</a>
+		</div>
 
-	<div class="col-sm-3 col-md-3">
+		<div class="col-sm-4 col-md-4">
 			<form class="navbar-form" role="search" action=<%=search_path%>>
-			<div class="input-group">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-search"></span>
+							<span class="label-icon">Subject</span>
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu pull-left" role="menu">
+							<%=populate_subjects(@subjects)%>
+						</ul>
+					</div>
+
 					<input type="text" class="form-control" placeholder="Search for Course" name="q">
 					<div class="input-group-btn">
-							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 					</div>
-			</div>
+				</div>
 			</form>
-	</div>
+		</div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-			<% if logged_in? %>
-			<li> <%= link_to 'Courses', courses_path %> </li>
-			<li> <%= link_to 'Subjects', subjects_path %> <li>
-			<li> <%= link_to 'Instructors', instructors_path %> <li>
-			<li> <%= link_to "Profile", current_user %> <li>
-		<li> <%= link_to "Logout", logout_path, method: "delete" %> <li>
-		<% else %>
-		<li> <%= link_to "Login", login_path %> <li>
-		<% end %>
-		</ul>
-      <!-- <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Settings</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li> -->
-    </ul>
-  </div>
-</nav>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<% if logged_in? %>
+				<li> <%= link_to 'Courses', courses_path %> </li>
+				<li> <%= link_to 'Subjects', subjects_path %> <li>
+					<li> <%= link_to 'Instructors', instructors_path %> <li>
+						<li> <%= link_to "Profile", current_user %> <li>
+							<li> <%= link_to "Logout", logout_path, method: "delete" %> <li>
+								<% else %>
+								<li> <%= link_to "Login", login_path %> <li>
+									<% end %>
+								</ul>
+								<!-- <li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+								<li><a href="#">Settings</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</li> -->
+					</ul>
+				</div>
+			</nav>
 
-</div>
-<body>
+		</div>
+		<body>
 
-	<%= yield %>
+			<%= yield %>
 
-</body>
-</html>
+		</body>
+
+		<script>
+
+		$(function(){
+
+			$(".input-group-btn .dropdown-menu li a").click(function(){
+
+				var selText = $(this).html();
+
+				//working version - for single button //
+				//$('.btn:first-child').html(selText+'<span class="caret"></span>');
+
+				//working version - for multiple buttons //
+				$(this).parents('.input-group-btn').find('.btn-search').html(selText);
+
+			});
+
+		});
+
+		</script>
+		</html>

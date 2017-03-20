@@ -3,7 +3,7 @@ module UsersHelper
 	def pretty_print_user(user)
 		string = ""
 		string << "<h1>Welcome, #{user.first} #{user.last}!</h1>"
-		string << "<h2>email: #{user.email}</h2>"
+		string << "<h2>contact: #{user.email}</h2>"
 		string.html_safe
 	end
 

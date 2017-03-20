@@ -15,6 +15,7 @@ class Course < ApplicationRecord
 	end
 
 	def self.search(params)
+		# byebug
 		if params
     	where('lower(name) LIKE ?  OR code LIKE ?', "%#{params.downcase}%" , "%#{params.upcase}%").order('id DESC')
   	else

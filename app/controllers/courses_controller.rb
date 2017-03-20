@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 
 	def search
 		@search = Course.search(params[:q])
+		byebug
 	end
 
 	def show
