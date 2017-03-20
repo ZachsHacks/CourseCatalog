@@ -45,9 +45,9 @@ end
 
 def seed_test_user
 	u = User.create(first: "Zach", middle: "Shale", last: "Weiss", email: "abc@gmail.com", password: "123", password_confirmation: "123")
-	(50).times do
-		Enrollment.find_or_create_by(course_id: rand(Course.count), user_id: u.id)
-	end
+	# (50).times do
+	# 	Enrollment.find_or_create_by(course_id: rand(Course.count), user_id: u.id)
+	# end
 end
 
 burn_down_the_house

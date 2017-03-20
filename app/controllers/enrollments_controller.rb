@@ -1,10 +1,10 @@
 class EnrollmentsController < ApplicationController
+	skip_before_filter :verify_authenticity_token
 
 	def create
+		Enrollment.find_or_create_by(course_id: params[:enroll].to_i, user_id: current_user.id)
 
-		 debugger
-
-		# Enrollment.create(enrollment_params)
+		redirect_to current_user
 		#
 		# respond_to do |format|
 		# 	format.js
@@ -13,11 +13,10 @@ class EnrollmentsController < ApplicationController
 	end
 
 	def destroy
-		Enrollment.destroy(enrollment_params)
+		Enrollment.where(course_id: params[:enroll].to_i, user_id: current_user.id).destroy_all
+
+		redirect_to current_user
 	end
 
-	def enrollment_params
-		params.require(:enrollment).permit(:course_id, :user_id)
-	end
 
 end

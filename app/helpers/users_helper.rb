@@ -12,6 +12,7 @@ module UsersHelper
 		enrollments.sort_by {|e| Course.find(e.course_id).code}.each do |e|
 			course = Course.find(e.course_id)
 			string << "<h3><a href='/courses/#{e.course_id}'> #{course.name} (#{course.code})</a></h3>"
+			string << add_enroll_button(e.course_id, false)
 		end
 		string.html_safe
 	end

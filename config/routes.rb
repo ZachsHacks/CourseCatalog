@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :listings
 	resources :subjects
 	resources :courses
-  get 'enrollments/create'
+  post 'enrollments/create'
 
-  get 'enrollments/destroy'
+  post 'enrollments/destroy'
 
   get 'sessions/new'
 	get 'courses/' , to: "courses#index"
@@ -18,5 +18,6 @@ Rails.application.routes.draw do
 
 	root "sessions#new"
 	get '/search', to: 'courses#search'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

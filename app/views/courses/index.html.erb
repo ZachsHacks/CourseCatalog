@@ -1,16 +1,15 @@
 <%=pretty_print_courses(@courses)%>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-
-$("button[id=user]").click(function(){
-  if (document.getElementById("user").name=="follow") {
-    value=document.getElementById("user").value;
-    $("#div1").load("/follow/new/"+value);
-  }else{
-    value=document.getElementById("user").value;
-    $("#div1").load("/follow/delete/"+value);
-  }
-});
-
+<!-- <script type="text/javascript">
+function enroll(command){
+    $.ajax({
+            url: "project_url/functoin_name", //where your want to send this request(the php file location)
+            type: "POST",
+            data: {command: command},
+            success: function(response){
+                    alert(response);
+                }
+       });
+}
 
 </script> -->
