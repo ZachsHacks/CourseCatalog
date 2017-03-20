@@ -17,3 +17,8 @@
  *= require_self
  *= require css/bootstrap
  */
+
+ a:hover{
+	 text-background: transparent !important;
+	 text-decoration: none;
+ }

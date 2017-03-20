@@ -1,5 +1,8 @@
 class Course < ApplicationRecord
 
+	has_many :listings
+	has_many :subjects, through: :listings
+
 	def independent_study?
 		if (self.independent_study == true)
 			"Yes"
