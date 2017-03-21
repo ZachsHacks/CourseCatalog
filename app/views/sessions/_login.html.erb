@@ -1,7 +1,10 @@
 
 <div class="container">
-	<div class="flash">
+	<div class="flash_danger">
 		<%= flash.now[:danger] if flash.now[:danger] != nil %>
+	</div>
+	<div class="flash_success">
+		<%= flash.now[:success] if flash.now[:success] != nil %>
 	</div>
 	<br>
 	<%= form_for(:session, url: login_path, layout: :basic)do |f| %>
@@ -15,10 +18,16 @@
 
 
 <style>
-.flash{
+.flash_danger{
 	background-color: #f2dede;
 	border-color: #eed3d7;
 	color: #b94a48;
+	text-align: left;
+	font-weight: bold;
+}
+
+.flash_success{
+	border-color: #eed3d7;
 	text-align: left;
 	font-weight: bold;
 }

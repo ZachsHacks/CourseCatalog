@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+				flash[:success] = "You have successfully created an account. You may now log in to continue."
         format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @user }
       else
