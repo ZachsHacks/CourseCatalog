@@ -1,7 +1,12 @@
 class CoursesController < ApplicationController
 
 	def index
-		@courses = Course.all
+		if logged_in?
+			@courses = Course.all
+		else
+			flash[:danger] = "You must be logged in to view the courses page."
+			redirect_to root_path
+		end
 	end
 
 	def search

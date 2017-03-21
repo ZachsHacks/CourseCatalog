@@ -1,7 +1,12 @@
 class SubjectsController < ApplicationController
 
   def index
-		@subjects = Subject.all
+		if logged_in?
+			@subjects = Subject.all
+		else
+			flash[:danger] = "You must be logged in to view the subjects page."
+			redirect_to root_path
+		end
   end
 
 	def show
