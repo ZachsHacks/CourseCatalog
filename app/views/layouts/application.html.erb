@@ -22,6 +22,8 @@
 			<a class="navbar-brand" href=<%=root_path%>>Course Catalog</a>
 		</div>
 
+				<% if logged_in? %>
+
 		<div class="col-sm-4 col-md-4">
 			<form class="navbar-form" role="search" action=<%=search_path%>>
 				<div class="input-group">
@@ -43,6 +45,8 @@
 				</div>
 			</form>
 		</div>
+
+		<%end%>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
