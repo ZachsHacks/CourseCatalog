@@ -1,11 +1,17 @@
 class CoursesController < ApplicationController
 
-  def index
+	def index
 		@courses = Course.all
-  end
+	end
 
 	def search
-		@search = Course.search(params[:q])
+		subject = Subject.where(name: params[:subject])[0].courses if !params[:subject].empty?
+		if subject != nil && params[:q] != nil
+			@search = subject.select{|course| course.name.downcase.include? params[:q]}
+		else
+			@search = Course.search(params[:q])
+		end
+
 	end
 
 	def show
