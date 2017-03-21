@@ -1,4 +1,8 @@
 <%=pretty_print_courses(@search)%>
+
+<div class="text-center"> <%= will_paginate @search %> </div>
+
+
 <div class="container text-center">
 
 <h3> <%=link_to 'Show All Courses', current_user %> </h3>
