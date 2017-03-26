@@ -1,9 +1,13 @@
-<!-- <% if session[:user]!=nil && !$redis.zscore(session[:user], @public_user.id).nil? %>
-	<button id="user" type="submit" class="btn btn-primary btn-xs" name="unfollow" value="<%= @public_user.id %>">
-      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Unfollow
-    </button>
-<% elsif session[:user]!=nil %> -->
-  <button id="user" type="submit" class="btn btn-primary btn-xs" name="follow" value="<%= @public_user.id %>">
- <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Enroll
-    </button>
-<!-- <% end %> -->
+<div id="enroll_button_<%=course_id%>">
+
+<%if @enrollments.pluck(:course_id).include?(course_id.to_i)%>
+
+<%= button_to 'Unenroll', enroll_in_course_path(course_id: course_id), :remote => true, class: "btn btn-primary" %>
+
+<%else%>
+
+<%= button_to 'Enroll', enroll_in_course_path(course_id: course_id), :remote => true, class: "btn btn-primary" %>
+
+<%end%>
+
+</div>

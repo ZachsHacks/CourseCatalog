@@ -4,19 +4,14 @@ class EnrollmentsController < ApplicationController
 	def create
 		Enrollment.find_or_create_by(course_id: params[:enroll].to_i, user_id: current_user.id)
 
-		redirect_to current_user
 		#
 		# respond_to do |format|
 		# 	format.js
 		# end
-
 	end
 
 	def destroy
 		Enrollment.where(course_id: params[:enroll].to_i, user_id: current_user.id).destroy_all
-
-		redirect_to current_user
 	end
-
 
 end

@@ -5,6 +5,7 @@ class CreateListings < ActiveRecord::Migration[5.0]
       t.integer :subject_id
       t.timestamps
     end
+
   end
 
 end

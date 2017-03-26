@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 	root "sessions#new"
 	get '/search', to: 'courses#search'
 
+	post "/enroll" => 'courses#enroll_in_course', as: 'enroll_in_course'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

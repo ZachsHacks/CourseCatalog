@@ -7,5 +7,7 @@
 
 <div class="container">
 	<h1> My Courses </h1>
-	<%=  pretty_print_enrollments(@enrollments) %> 
+	<div id="my_courses" data-remote="true">
+		<%=  pretty_print_enrollments(@enrollments) %>
+	</div>
 </div>

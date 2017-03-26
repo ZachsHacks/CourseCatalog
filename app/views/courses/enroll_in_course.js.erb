@@ -1,0 +1,2 @@
+//alert(<%=@user_is_enrolled%>);
+$("#enroll_button_<%=@course%>").html("<%= j render(:partial => 'button', :locals => {:course_id => @course.to_i}) %>");

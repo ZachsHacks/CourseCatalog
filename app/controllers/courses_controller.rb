@@ -2,8 +2,25 @@ require 'will_paginate/array'
 
 class CoursesController < ApplicationController
 
+	def enroll_in_course
+		@course = params["course_id"]
+
+		@enrollments = Enrollment.where(user_id: current_user.id)
+
+		if enrolled?
+			Enrollment.where(course_id: @course.to_i, user_id: current_user.id).destroy_all
+		else
+			Enrollment.find_or_create_by(course_id: @course.to_i, user_id: current_user.id)
+		end
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def index
 		if logged_in?
+			@enrollments = Enrollment.where(user_id: current_user.id)
 			@courses = Course.paginate(page: params[:page], per_page: 15)
 		else
 			flash[:danger] = "You must be logged in to view the courses page."
@@ -28,6 +45,10 @@ class CoursesController < ApplicationController
 
 	def set_course
 		@course= Course.find(params[:id])
+	end
+
+	def enrolled?
+		@enrollments.pluck(:course_id).include?(@course.to_i)
 	end
 
 end

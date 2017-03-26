@@ -12,7 +12,7 @@ module CourseHelper
 				string << "<p class='courses__independent'>Independent Study: #{c.independent_study?}</p>"
 				string << "<p class='courses__credits'>Credits #{c.credits}</p>" if c.credits != nil
 				string << "<p class='courses__description'>Description: #{c.description}</p>"
-				string << add_enroll_button(c.id, true) if logged_in?
+				string << add_enroll_button(c.id) if logged_in?
 				string << "</div>"
 			end
 		end
@@ -33,20 +33,10 @@ module CourseHelper
 		string.html_safe
 	end
 
-	def add_enroll_button(course_id, choice)
-		string = "<div id='div1'>"
-		# string << "<form action=\"http://google.com\">"
-		if choice
-			string << "<form action=\"#{enrollments_create_path(course_id, current_user.id)}\" method=\"post\">"
-			string << "<button type='submit' id='user' name='enroll' value=\"#{course_id}\" data-remote='true' class='btn btn-secondary'>Enroll</button>"
-			string << '</form>'
-		else
-			string << "<form action=\"#{enrollments_destroy_path(course_id, current_user.id)}\" method=\"post\">"
-			string << "<button type='submit' id='user' name='enroll' value=\"#{course_id}\" data-remote='true' class='btn btn-secondary'>Unenroll</button>"
-			string << '</form>'
-		end
-		string << "</div>"
-
+	def add_enroll_button(course_id)
+		string = ""
+		string << render(:partial => 'courses/button', :locals => {:course_id => course_id.to_i}).to_s
 		string
 	end
+
 end

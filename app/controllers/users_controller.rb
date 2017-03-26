@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   def show
 		if logged_in?
 			@enrollments = @user.enrollments
+
 		else
 			flash[:danger] = "You must be logged in to view your courses."
 			redirect_to root_path
 		end
-
   end
 
   # GET /users/new
