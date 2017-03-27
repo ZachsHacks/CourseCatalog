@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
 	def enroll_in_course
 		@course = params["course_id"]
 
-		@enrollments = Enrollment.where(user_id: current_user.id)
+		@enrollments = current_user.enrollments
 
 		if enrolled?
 			Enrollment.where(course_id: @course.to_i, user_id: current_user.id).destroy_all
@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
 	end
 
 	def search
+		@enrollments = current_user.enrollments
 		subject = Subject.where(name: params[:subject])[0].courses if !params[:subject].empty?
 		if subject != nil && params[:q] != nil
 			@search = subject.select{|course| course.name.downcase.include? params[:q]}.paginate(:page => params[:page], per_page: 15)
