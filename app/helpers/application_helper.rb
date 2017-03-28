@@ -11,4 +11,9 @@ module ApplicationHelper
 		end
 		string.html_safe
 	end
+
+	def populate_autofil(courses, codes)
+		array = courses + codes
+		return raw array
+	end
 end
