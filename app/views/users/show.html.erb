@@ -7,17 +7,20 @@
 
 <div class="container" >
 	<h1> My Courses </h1>
-	<div id="my_courses">
-		<%=  pretty_print_enrollments(@enrollments) %>
+	<div id="course_wrapper">
+		<div id="my_courses">
+			<%=render 'enrollment' %>
+			<!-- <%=  pretty_print_enrollments(@enrollments) %> -->
+		</div>
 	</div>
 </div>
 
 <script>
 
-function updateDiv() {
-	$(document).ready(function() {
-		$("#my_courses").load(location.href+" #my_courses>*","");
+$(document).ready(function() {
+	$('.button_to').on('click', function() {
+		$(this).parent().parent().hide();
 	});
-};
+});
 
 </script>

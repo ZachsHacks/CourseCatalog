@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def show
 		if logged_in?
 			@enrollments = @user.enrollments
-
+			@courses = current_user.courses
+			#byebug
 		else
 			flash[:danger] = "You must be logged in to view your courses."
 			redirect_to root_path

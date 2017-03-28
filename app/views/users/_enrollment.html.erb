@@ -1,0 +1,6 @@
+<% @courses.sort_by {|c| c.code}.each do |course| %>
+<div class="course_div">
+	<h3><a href='/courses/#{e.course_id}'> <%="#{course.name} #{course.code}"%></a></h3>
+	<%=render(:partial => 'courses/button', :locals => {:course_id => course.id.to_i})%>
+</div>
+<%end%>
