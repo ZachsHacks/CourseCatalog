@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
   end
 
 	def show
+		@enrollments = current_user.enrollments
 		@subject = Subject.find(params[:id])
 	end
 
